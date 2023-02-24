@@ -1,0 +1,19 @@
+Switch:
+  Allowed:
+    Type: ACTIONBAR_TITLE
+    Title: '&a&lALLOWED'
+    Subtitle: '&7You can now build'
+    Actionbar: '&7Remembering during this session'
+    BlobSound: System.Done
+  Denied:
+    Type: ACTIONBAR_TITLE
+    Title: '&c&lDENIED'
+    Subtitle: '&7You can no longer build here'
+    Actionbar: '&7Remembering during this session'
+    BlobSound: System.Alert
+  Already-Whitelisted:
+    Type: ACTIONBAR_TITLE
+    Title: '&a&lWHITELISTED'
+    Subtitle: '&7You can build here'
+    Actionbar: '&7Persistent during server restarts'
+    BlobSound: System.Done

@@ -1,0 +1,11 @@
+Build:
+# If true, all players that are not whitelisted will not be allowed
+# to place or break blocks unless they execute '/blobbuild switchstate'
+  Register: true
+# All players inside this list can place and break blocks without
+# needing to execute the '/build' command. This is useful since
+# players that execute '/blobbuild switchstate' are not remembered
+# between server restarts / plugin unloads.
+# It's perfect to fill in your build team :)
+  Whitelisted-Players:
+  - 'benaranjo'

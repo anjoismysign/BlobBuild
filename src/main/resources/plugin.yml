@@ -1,0 +1,11 @@
+name: BlobBuild
+version: '${project.version}'
+main: us.mytheria.blobbuild.BlobBuild
+api-version: 1.19
+depend: [ BlobLib ]
+authors: [ anjoismysign ]
+description: An efficient build protection plugin
+commands:
+  blobbuild:
+    usage: "/blobbuild switchstate"
+    aliases: [ bb, build ]
