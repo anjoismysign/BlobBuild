@@ -24,7 +24,7 @@ public class BuildListener implements Listener {
         e.setCancelled(true);
     }
 
-    @EventHandler
+    @EventHandler (priority = EventPriority.HIGHEST, ignoreCancelled = true)
     public void onPlace(BlockPlaceEvent e){
         Player player = e.getPlayer();
         if (listenerManager.isWhitelisted(player))

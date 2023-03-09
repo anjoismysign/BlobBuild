@@ -10,6 +10,7 @@ import java.util.List;
 
 public class ConfigManager extends BuildManager {
     private FileConfiguration configuration;
+    private boolean antiArmorStandDestroy;
 
     public ConfigManager(BuildManagerDirector managerDirector) {
         super(managerDirector);
@@ -24,6 +25,7 @@ public class ConfigManager extends BuildManager {
         main.getConfig().options().copyDefaults(true);
         main.saveConfig();
         configuration = main.getConfig();
+        antiArmorStandDestroy = configuration.getBoolean("AntiArmorStand-Destroy.Register");
     }
 
     @Override
@@ -32,5 +34,9 @@ public class ConfigManager extends BuildManager {
 
     public FileConfiguration getConfiguration() {
         return configuration;
+    }
+
+    public boolean antiArmorStandDestroy() {
+        return antiArmorStandDestroy;
     }
 }
