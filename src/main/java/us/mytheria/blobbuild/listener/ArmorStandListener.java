@@ -1,13 +1,11 @@
-package us.mytheria.blobbuild.director.manager.listener;
+package us.mytheria.blobbuild.listener;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import us.mytheria.blobbuild.director.manager.ConfigManager;
 
@@ -15,27 +13,27 @@ public class ArmorStandListener implements Listener {
     private final ListenerManager listenerManager;
     private final ConfigManager configManager;
 
-    public ArmorStandListener(ListenerManager listenerManager){
+    public ArmorStandListener(ListenerManager listenerManager) {
         this.listenerManager = listenerManager;
         this.configManager = listenerManager.getManagerDirector().getConfigManager();
     }
 
-    public void unload(){
+    public void unload() {
         HandlerList.unregisterAll(this);
     }
 
-    public void load(){
+    public void load() {
         if (configManager.antiArmorStandDestroy())
             listenerManager.getPlugin().getServer().getPluginManager().registerEvents(this, listenerManager.getPlugin());
     }
 
-    public void reload(){
+    public void reload() {
         unload();
         load();
     }
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
-    public void onDamage(EntityDamageByEntityEvent event){
+    public void onDamage(EntityDamageByEntityEvent event) {
         Entity entity = event.getEntity();
         if (entity.getType() != EntityType.ARMOR_STAND)
             return;

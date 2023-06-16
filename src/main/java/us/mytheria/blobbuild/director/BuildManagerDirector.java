@@ -1,17 +1,14 @@
 package us.mytheria.blobbuild.director;
 
-import us.mytheria.bloblib.managers.ManagerDirector;
 import us.mytheria.blobbuild.BlobBuild;
 import us.mytheria.blobbuild.director.manager.ConfigManager;
-import us.mytheria.blobbuild.director.manager.listener.ListenerManager;
+import us.mytheria.blobbuild.listener.ListenerManager;
+import us.mytheria.bloblib.entities.GenericManagerDirector;
 
-public class BuildManagerDirector extends ManagerDirector {
-    public static BuildManagerDirector getInstance() {
-        return BlobBuild.getInstance().getManagerDirector();
-    }
+public class BuildManagerDirector extends GenericManagerDirector<BlobBuild> {
 
-    public BuildManagerDirector() {
-        super(BlobBuild.getInstance());
+    public BuildManagerDirector(BlobBuild plugin) {
+        super(plugin);
         addManager("ConfigManager", new ConfigManager(this));
         addManager("ListenerManager", new ListenerManager(this));
     }

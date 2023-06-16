@@ -3,21 +3,19 @@ package us.mytheria.blobbuild;
 import org.bukkit.Bukkit;
 import us.mytheria.bloblib.managers.BlobPlugin;
 import us.mytheria.blobbuild.director.BuildManagerDirector;
+import us.mytheria.bloblib.managers.IManagerDirector;
 
-public final class BlobBuild extends BlobPlugin {
-
+public class BlobBuild extends BlobPlugin {
     private BuildManagerDirector director;
+    private IManagerDirector proxy;
 
-    public static BlobBuild instance;
-
-    public static BlobBuild getInstance() {
-        return instance;
-    }
+    public static BlobBuild INSTANCE;
 
     @Override
     public void onEnable() {
-        instance = this;
-        director = new BuildManagerDirector();
+        INSTANCE = this;
+        director = new BuildManagerDirector(this);
+        proxy = director.proxy();
         Bukkit.getScheduler().runTask(this, () ->
                 director.postWorld());
     }
@@ -25,10 +23,10 @@ public final class BlobBuild extends BlobPlugin {
     @Override
     public void onDisable() {
         unregisterFromBlobLib();
+        director.unload();
     }
 
-    @Override
-    public BuildManagerDirector getManagerDirector() {
-        return director;
+    public IManagerDirector getManagerDirector() {
+        return proxy;
     }
 }

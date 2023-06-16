@@ -1,4 +1,4 @@
-package us.mytheria.blobbuild.director.manager.listener;
+package us.mytheria.blobbuild.listener;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -31,38 +31,35 @@ public class ListenerManager extends BuildManager implements Listener, CommandEx
 
     public ListenerManager(BuildManagerDirector managerDirector) {
         super(managerDirector);
+        BlobBuild plugin = managerDirector.getPlugin();
         exception = new HashSet<>();
-        BlobBuild.getInstance().getCommand("blobbuild").setExecutor(this);
-        BlobBuild.getInstance().getCommand("blobbuild").setTabCompleter(this);
+        plugin.getCommand("blobbuild").setExecutor(this);
+        plugin.getCommand("blobbuild").setTabCompleter(this);
         buildListener = new BuildListener(this);
         armorStandListener = new ArmorStandListener(this);
-        Bukkit.getPluginManager().registerEvents(this, BlobBuild.getInstance());
+        Bukkit.getPluginManager().registerEvents(this, plugin);
         reload();
     }
 
     @Override
-    public void reload(){
+    public void reload() {
         HandlerList.unregisterAll(buildListener);
         SimpleEventListener<List<String>> whitelist = SimpleEventListener.STRING_LIST
                 (getManagerDirector().getConfigManager().getConfiguration()
                         .getConfigurationSection("Build"), "Whitelisted-Players");
         if (whitelist.register()) {
             this.whitelist = whitelist.value();
-            Bukkit.getPluginManager().registerEvents(buildListener, BlobBuild.getInstance());
+            Bukkit.getPluginManager().registerEvents(buildListener, getPlugin());
         }
         armorStandListener.reload();
     }
 
-    @Override
-    public void loadInConstructor() {
-    }
-
-    protected boolean isWhitelisted(Player player){
+    protected boolean isWhitelisted(Player player) {
         return whitelist.contains(player.getName());
     }
 
     @EventHandler
-    public void onQuit(PlayerQuitEvent e){
+    public void onQuit(PlayerQuitEvent e) {
         Player player = e.getPlayer();
         exception.remove(player.getName());
     }
@@ -75,13 +72,13 @@ public class ListenerManager extends BuildManager implements Listener, CommandEx
             return false;
         if (!(sender instanceof Player player))
             return false;
-        if (isWhitelisted(player)){
+        if (isWhitelisted(player)) {
             BlobLibAssetAPI.getMessage("Switch.Already-Whitelisted").sendAndPlay(player);
             return true;
         }
         if (!player.hasPermission("blobbuild.switchstate"))
             return false;
-        if (exception.contains(player.getName())){
+        if (exception.contains(player.getName())) {
             exception.remove(player.getName());
             BlobLibAssetAPI.getMessage("Switch.Denied").sendAndPlay(player);
         } else {

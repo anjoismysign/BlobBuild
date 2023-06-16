@@ -1,15 +1,11 @@
 package us.mytheria.blobbuild.director;
 
-import us.mytheria.bloblib.managers.Manager;
+import us.mytheria.blobbuild.BlobBuild;
+import us.mytheria.bloblib.entities.GenericManager;
 
-public class BuildManager extends Manager {
+public class BuildManager extends GenericManager<BlobBuild, BuildManagerDirector> {
 
     public BuildManager(BuildManagerDirector managerDirector) {
         super(managerDirector);
-    }
-
-    @Override
-    public BuildManagerDirector getManagerDirector() {
-        return (BuildManagerDirector) super.getManagerDirector();
     }
 }
