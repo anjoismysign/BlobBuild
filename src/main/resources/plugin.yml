@@ -1,7 +1,7 @@
 name: BlobBuild
 version: ${project.version}
 main: us.mytheria.blobbuild.BlobBuild
-api-version: 1.19
+api-version: 1.17
 depend: [ BlobLib ]
 authors: [ anjoismysign ]
 description: An efficient build protection plugin
