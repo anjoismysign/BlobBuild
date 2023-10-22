@@ -1,5 +1,5 @@
 name: BlobBuild
-version: '${project.version}'
+version: ${project.version}
 main: us.mytheria.blobbuild.BlobBuild
 api-version: 1.19
 depend: [ BlobLib ]
