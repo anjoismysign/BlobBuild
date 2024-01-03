@@ -9,11 +9,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import us.mytheria.blobbuild.director.manager.ConfigManager;
 
-public class ArmorStandListener implements Listener {
+public class ArmorStandDestroyListener implements Listener {
     private final ListenerManager listenerManager;
     private final ConfigManager configManager;
 
-    public ArmorStandListener(ListenerManager listenerManager) {
+    public ArmorStandDestroyListener(ListenerManager listenerManager) {
         this.listenerManager = listenerManager;
         this.configManager = listenerManager.getManagerDirector().getConfigManager();
     }

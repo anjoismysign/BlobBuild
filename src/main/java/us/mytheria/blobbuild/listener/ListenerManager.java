@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 import us.mytheria.blobbuild.BlobBuild;
 import us.mytheria.blobbuild.director.BuildManager;
 import us.mytheria.blobbuild.director.BuildManagerDirector;
-import us.mytheria.bloblib.BlobLibAssetAPI;
+import us.mytheria.bloblib.api.BlobLibMessageAPI;
 import us.mytheria.bloblib.entities.SimpleEventListener;
 
 import java.util.ArrayList;
@@ -27,7 +27,9 @@ public class ListenerManager extends BuildManager implements Listener, CommandEx
     protected final Set<String> exception;
     private List<String> whitelist;
     private final BuildListener buildListener;
-    private final ArmorStandListener armorStandListener;
+    private final ArmorStandDestroyListener armorStandListener;
+    private final ItemFrameDestroyListener itemFrameListener;
+    private final ItemFrameInteractListener itemFrameInteractListener;
 
     public ListenerManager(BuildManagerDirector managerDirector) {
         super(managerDirector);
@@ -36,7 +38,9 @@ public class ListenerManager extends BuildManager implements Listener, CommandEx
         plugin.getCommand("blobbuild").setExecutor(this);
         plugin.getCommand("blobbuild").setTabCompleter(this);
         buildListener = new BuildListener(this);
-        armorStandListener = new ArmorStandListener(this);
+        armorStandListener = new ArmorStandDestroyListener(this);
+        itemFrameListener = new ItemFrameDestroyListener(this);
+        itemFrameInteractListener = new ItemFrameInteractListener(this);
         Bukkit.getPluginManager().registerEvents(this, plugin);
         reload();
     }
@@ -52,6 +56,8 @@ public class ListenerManager extends BuildManager implements Listener, CommandEx
             Bukkit.getPluginManager().registerEvents(buildListener, getPlugin());
         }
         armorStandListener.reload();
+        itemFrameListener.reload();
+        itemFrameInteractListener.reload();
     }
 
     protected boolean isWhitelisted(Player player) {
@@ -73,17 +79,17 @@ public class ListenerManager extends BuildManager implements Listener, CommandEx
         if (!(sender instanceof Player player))
             return false;
         if (isWhitelisted(player)) {
-            BlobLibAssetAPI.getMessage("Switch.Already-Whitelisted").sendAndPlay(player);
+            BlobLibMessageAPI.getInstance().getMessage("Switch.Already-Whitelisted", player).handle(player);
             return true;
         }
         if (!player.hasPermission("blobbuild.switchstate"))
             return false;
         if (exception.contains(player.getName())) {
             exception.remove(player.getName());
-            BlobLibAssetAPI.getMessage("Switch.Denied").sendAndPlay(player);
+            BlobLibMessageAPI.getInstance().getMessage("Switch.Denied", player).handle(player);
         } else {
             exception.add(player.getName());
-            BlobLibAssetAPI.getMessage("Switch.Allowed").sendAndPlay(player);
+            BlobLibMessageAPI.getInstance().getMessage("Switch.Allowed", player).handle(player);
         }
         return true;
     }

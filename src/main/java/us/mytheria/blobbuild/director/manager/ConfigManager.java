@@ -8,6 +8,8 @@ import us.mytheria.blobbuild.director.BuildManagerDirector;
 public class ConfigManager extends BuildManager {
     private FileConfiguration configuration;
     private boolean antiArmorStandDestroy;
+    private boolean antiItemFrameDestroy;
+    private boolean antiItemFrameInteract;
 
     public ConfigManager(BuildManagerDirector managerDirector) {
         super(managerDirector);
@@ -22,7 +24,12 @@ public class ConfigManager extends BuildManager {
         plugin.getConfig().options().copyDefaults(true);
         plugin.saveConfig();
         configuration = plugin.getConfig();
-        antiArmorStandDestroy = configuration.getBoolean("AntiArmorStand-Destroy.Register");
+        antiArmorStandDestroy = configuration
+                .getBoolean("AntiArmorStand-Destroy.Register");
+        antiItemFrameDestroy = configuration
+                .getBoolean("AntiItemFrame-Destroy.Register");
+        antiItemFrameInteract = configuration
+                .getBoolean("AntiItemFrame-Interact.Register");
     }
 
     public FileConfiguration getConfiguration() {
@@ -31,5 +38,13 @@ public class ConfigManager extends BuildManager {
 
     public boolean antiArmorStandDestroy() {
         return antiArmorStandDestroy;
+    }
+
+    public boolean antiItemFrameDestroy() {
+        return antiItemFrameDestroy;
+    }
+
+    public boolean antiItemFrameInteract() {
+        return antiItemFrameInteract;
     }
 }
