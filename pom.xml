@@ -13,7 +13,7 @@
 
     <description>An efficient build protection plugin</description>
     <properties>
-        <testServer>/Users/lbenav8095/Documents/Dev/Java/anjoismysign/BlobLumber</testServer>
+        <testServer>/Users/lbenav8095/Documents/Dev/Java/anjoismysign/1.19 Test Server</testServer>
         <java.version>16</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>

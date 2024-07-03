@@ -10,6 +10,7 @@ public class ConfigManager extends BuildManager {
     private boolean antiArmorStandDestroy;
     private boolean antiItemFrameDestroy;
     private boolean antiItemFrameInteract;
+    private boolean antiCropTrample;
 
     public ConfigManager(BuildManagerDirector managerDirector) {
         super(managerDirector);
@@ -30,6 +31,8 @@ public class ConfigManager extends BuildManager {
                 .getBoolean("AntiItemFrame-Destroy.Register");
         antiItemFrameInteract = configuration
                 .getBoolean("AntiItemFrame-Interact.Register");
+        antiCropTrample = configuration
+                .getBoolean("AntiCrop-Trample.Register");
     }
 
     public FileConfiguration getConfiguration() {
@@ -46,5 +49,9 @@ public class ConfigManager extends BuildManager {
 
     public boolean antiItemFrameInteract() {
         return antiItemFrameInteract;
+    }
+
+    public boolean antiCropTrample() {
+        return antiCropTrample;
     }
 }

@@ -19,3 +19,5 @@ AntiItemFrame-Destroy:
   Register: true
 AntiItemFrame-Interact:
   Register: true
+AntiCrop-Trample:
+  Register: true
