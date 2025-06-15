@@ -1,10 +1,10 @@
-package us.mytheria.blobbuild.listener;
+package io.github.anjoismysign.blobbuild.listener;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.event.*;
 import org.bukkit.event.player.PlayerInteractEvent;
-import us.mytheria.blobbuild.director.manager.ConfigManager;
+import io.github.anjoismysign.blobbuild.director.manager.ConfigManager;
 
 public class CropTrampleListener implements Listener {
     private final ListenerManager listenerManager;

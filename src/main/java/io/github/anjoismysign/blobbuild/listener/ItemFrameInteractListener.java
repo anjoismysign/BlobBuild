@@ -1,19 +1,18 @@
-package us.mytheria.blobbuild.listener;
+package io.github.anjoismysign.blobbuild.listener;
 
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import us.mytheria.blobbuild.director.manager.ConfigManager;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
+import io.github.anjoismysign.blobbuild.director.manager.ConfigManager;
 
-public class ItemFrameDestroyListener implements Listener {
+public class ItemFrameInteractListener implements Listener {
     private final ListenerManager listenerManager;
     private final ConfigManager configManager;
 
-    public ItemFrameDestroyListener(ListenerManager listenerManager) {
+    public ItemFrameInteractListener(ListenerManager listenerManager) {
         this.listenerManager = listenerManager;
         this.configManager = listenerManager.getManagerDirector().getConfigManager();
     }
@@ -23,7 +22,7 @@ public class ItemFrameDestroyListener implements Listener {
     }
 
     public void load() {
-        if (configManager.antiItemFrameDestroy())
+        if (configManager.antiItemFrameInteract())
             listenerManager.getPlugin().getServer().getPluginManager().registerEvents(this, listenerManager.getPlugin());
     }
 
@@ -33,9 +32,8 @@ public class ItemFrameDestroyListener implements Listener {
     }
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
-    public void onDamage(EntityDamageByEntityEvent event) {
-        Entity entity = event.getEntity();
-        if (entity.getType() != EntityType.ITEM_FRAME)
+    public void onInteract(PlayerInteractEntityEvent event) {
+        if (event.getRightClicked().getType() != EntityType.ITEM_FRAME)
             return;
         event.setCancelled(true);
     }

@@ -1,11 +1,11 @@
-package us.mytheria.blobbuild;
+package io.github.anjoismysign.blobbuild;
 
 import org.bukkit.Bukkit;
 import org.jetbrains.annotations.NotNull;
-import us.mytheria.blobbuild.director.BuildManagerDirector;
-import us.mytheria.bloblib.entities.PluginUpdater;
-import us.mytheria.bloblib.managers.BlobPlugin;
-import us.mytheria.bloblib.managers.IManagerDirector;
+import io.github.anjoismysign.blobbuild.director.BuildManagerDirector;
+import io.github.anjoismysign.bloblib.entities.PluginUpdater;
+import io.github.anjoismysign.bloblib.managers.BlobPlugin;
+import io.github.anjoismysign.bloblib.managers.IManagerDirector;
 
 public class BlobBuild extends BlobPlugin {
     private BuildManagerDirector director;

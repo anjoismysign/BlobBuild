@@ -1,9 +1,9 @@
-package us.mytheria.blobbuild.director.manager;
+package io.github.anjoismysign.blobbuild.director.manager;
 
 import org.bukkit.configuration.file.FileConfiguration;
-import us.mytheria.blobbuild.BlobBuild;
-import us.mytheria.blobbuild.director.BuildManager;
-import us.mytheria.blobbuild.director.BuildManagerDirector;
+import io.github.anjoismysign.blobbuild.BlobBuild;
+import io.github.anjoismysign.blobbuild.director.BuildManager;
+import io.github.anjoismysign.blobbuild.director.BuildManagerDirector;
 
 public class ConfigManager extends BuildManager {
     private FileConfiguration configuration;

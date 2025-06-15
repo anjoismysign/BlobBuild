@@ -1,7 +1,7 @@
-package us.mytheria.blobbuild.director;
+package io.github.anjoismysign.blobbuild.director;
 
-import us.mytheria.blobbuild.BlobBuild;
-import us.mytheria.bloblib.entities.GenericManager;
+import io.github.anjoismysign.blobbuild.BlobBuild;
+import io.github.anjoismysign.bloblib.entities.GenericManager;
 
 public class BuildManager extends GenericManager<BlobBuild, BuildManagerDirector> {
 

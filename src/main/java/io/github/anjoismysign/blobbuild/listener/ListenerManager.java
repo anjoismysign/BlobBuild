@@ -1,4 +1,4 @@
-package us.mytheria.blobbuild.listener;
+package io.github.anjoismysign.blobbuild.listener;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -12,11 +12,11 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import us.mytheria.blobbuild.BlobBuild;
-import us.mytheria.blobbuild.director.BuildManager;
-import us.mytheria.blobbuild.director.BuildManagerDirector;
-import us.mytheria.bloblib.api.BlobLibMessageAPI;
-import us.mytheria.bloblib.entities.SimpleEventListener;
+import io.github.anjoismysign.blobbuild.BlobBuild;
+import io.github.anjoismysign.blobbuild.director.BuildManager;
+import io.github.anjoismysign.blobbuild.director.BuildManagerDirector;
+import io.github.anjoismysign.bloblib.api.BlobLibMessageAPI;
+import io.github.anjoismysign.bloblib.entities.SimpleEventListener;
 
 import java.util.ArrayList;
 import java.util.HashSet;

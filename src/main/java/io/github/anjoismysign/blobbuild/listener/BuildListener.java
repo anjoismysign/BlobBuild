@@ -1,4 +1,4 @@
-package us.mytheria.blobbuild.listener;
+package io.github.anjoismysign.blobbuild.listener;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

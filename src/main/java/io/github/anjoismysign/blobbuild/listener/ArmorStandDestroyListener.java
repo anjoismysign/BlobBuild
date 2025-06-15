@@ -1,4 +1,4 @@
-package us.mytheria.blobbuild.listener;
+package io.github.anjoismysign.blobbuild.listener;
 
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -7,7 +7,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import us.mytheria.blobbuild.director.manager.ConfigManager;
+import io.github.anjoismysign.blobbuild.director.manager.ConfigManager;
 
 public class ArmorStandDestroyListener implements Listener {
     private final ListenerManager listenerManager;
