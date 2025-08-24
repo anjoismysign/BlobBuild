@@ -7,8 +7,7 @@ Build:
   # players that execute '/blobbuild switchstate' are not remembered
   # between server restarts / plugin unloads.
   # It's perfect to fill in your build team :)
-  Whitelisted-Players:
-    - 'benaranjo'
+  Whitelisted-Players: []
 # If true, all players that are not whitelisted will not be allowed
 # to destroy armor stands unless they execute '/blobbuild switchstate'
 AntiArmorStand-Destroy:
