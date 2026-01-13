@@ -68,8 +68,8 @@ public class ListenerManager extends BuildManager implements Listener, CommandEx
     }
 
     @EventHandler
-    public void onQuit(PlayerQuitEvent e) {
-        Player player = e.getPlayer();
+    public void onQuit(PlayerQuitEvent event) {
+        Player player = event.getPlayer();
         exception.remove(player.getName());
     }
 

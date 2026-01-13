@@ -15,22 +15,22 @@ public class BuildListener implements Listener {
     }
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
-    public void onBreak(BlockBreakEvent e) {
-        Player player = e.getPlayer();
+    public void onBreak(BlockBreakEvent event) {
+        Player player = event.getPlayer();
         if (listenerManager.isWhitelisted(player))
             return;
         if (listenerManager.exception.contains(player.getName()))
             return;
-        e.setCancelled(true);
+        event.setCancelled(true);
     }
 
     @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
-    public void onPlace(BlockPlaceEvent e) {
-        Player player = e.getPlayer();
+    public void onPlace(BlockPlaceEvent event) {
+        Player player = event.getPlayer();
         if (listenerManager.isWhitelisted(player))
             return;
         if (listenerManager.exception.contains(player.getName()))
             return;
-        e.setCancelled(true);
+        event.setCancelled(true);
     }
 }
