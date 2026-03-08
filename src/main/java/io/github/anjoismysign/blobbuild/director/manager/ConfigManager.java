@@ -1,9 +1,18 @@
 package io.github.anjoismysign.blobbuild.director.manager;
 
+import io.papermc.paper.registry.RegistryAccess;
+import io.papermc.paper.registry.RegistryKey;
+import org.bukkit.NamespacedKey;
+import org.bukkit.Registry;
+import org.bukkit.block.BlockType;
 import org.bukkit.configuration.file.FileConfiguration;
 import io.github.anjoismysign.blobbuild.BlobBuild;
 import io.github.anjoismysign.blobbuild.director.BuildManager;
 import io.github.anjoismysign.blobbuild.director.BuildManagerDirector;
+
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class ConfigManager extends BuildManager {
     private FileConfiguration configuration;
@@ -11,6 +20,8 @@ public class ConfigManager extends BuildManager {
     private boolean antiItemFrameDestroy;
     private boolean antiItemFrameInteract;
     private boolean antiCropTrample;
+    private boolean antiBlockInteract;
+    private Set<BlockType> allowedBlockInteract;
 
     public ConfigManager(BuildManagerDirector managerDirector) {
         super(managerDirector);
@@ -33,6 +44,22 @@ public class ConfigManager extends BuildManager {
                 .getBoolean("AntiItemFrame-Interact.Register");
         antiCropTrample = configuration
                 .getBoolean("AntiCrop-Trample.Register");
+        antiBlockInteract = configuration
+                .getBoolean("AntiBlock-Interact.Register");
+        Registry<BlockType> blockTypes = RegistryAccess.registryAccess().getRegistry(RegistryKey.BLOCK);
+        allowedBlockInteract = configuration
+                .getStringList("AntiBlock-Interact.Allowed")
+                .stream()
+                .map(key-> {
+                    String[] split = key.split(":");
+                    if (split.length == 1){
+                        return blockTypes.get(NamespacedKey.minecraft(key));
+                    } else {
+                        return blockTypes.get(new NamespacedKey(split[0], split[1]));
+                    }
+                })
+                .filter(Objects::nonNull)
+                .collect(Collectors.toUnmodifiableSet());
     }
 
     public FileConfiguration getConfiguration() {
@@ -53,5 +80,13 @@ public class ConfigManager extends BuildManager {
 
     public boolean antiCropTrample() {
         return antiCropTrample;
+    }
+
+    public boolean antiBlockInteract(){
+        return antiBlockInteract;
+    }
+
+    public Set<BlockType> getAllowedBlockInteract() {
+        return allowedBlockInteract;
     }
 }

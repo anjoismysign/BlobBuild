@@ -29,7 +29,7 @@ public class CropTrampleListener implements Listener {
         load();
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
     public void onTrample(PlayerInteractEvent event) {
         if (event.useInteractedBlock() == Event.Result.DENY)
             return;

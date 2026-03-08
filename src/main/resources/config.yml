@@ -20,3 +20,6 @@ AntiItemFrame-Interact:
   Register: true
 AntiCrop-Trample:
   Register: true
+AntiBlock-Interact:
+  Register: true
+  Allowed: []

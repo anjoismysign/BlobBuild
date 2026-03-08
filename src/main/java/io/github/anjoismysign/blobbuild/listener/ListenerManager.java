@@ -31,6 +31,7 @@ public class ListenerManager extends BuildManager implements Listener, CommandEx
     private final ItemFrameDestroyListener itemFrameListener;
     private final ItemFrameInteractListener itemFrameInteractListener;
     private final CropTrampleListener cropTrampleListener;
+    private final BlockInteractListener blockInteractListener;
 
     public ListenerManager(BuildManagerDirector managerDirector) {
         super(managerDirector);
@@ -43,6 +44,7 @@ public class ListenerManager extends BuildManager implements Listener, CommandEx
         itemFrameListener = new ItemFrameDestroyListener(this);
         itemFrameInteractListener = new ItemFrameInteractListener(this);
         cropTrampleListener = new CropTrampleListener(this);
+        blockInteractListener = new BlockInteractListener(this);
         Bukkit.getPluginManager().registerEvents(this, plugin);
         reload();
     }
@@ -61,6 +63,7 @@ public class ListenerManager extends BuildManager implements Listener, CommandEx
         itemFrameListener.reload();
         itemFrameInteractListener.reload();
         cropTrampleListener.reload();
+        blockInteractListener.reload();
     }
 
     protected boolean isWhitelisted(Player player) {

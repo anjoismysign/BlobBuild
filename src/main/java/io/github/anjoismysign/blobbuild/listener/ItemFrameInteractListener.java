@@ -31,7 +31,7 @@ public class ItemFrameInteractListener implements Listener {
         load();
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
     public void onInteract(PlayerInteractEntityEvent event) {
         if (event.getRightClicked().getType() != EntityType.ITEM_FRAME)
             return;

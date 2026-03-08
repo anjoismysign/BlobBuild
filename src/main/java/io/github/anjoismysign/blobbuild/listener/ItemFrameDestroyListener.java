@@ -32,7 +32,7 @@ public class ItemFrameDestroyListener implements Listener {
         load();
     }
 
-    @EventHandler(priority = EventPriority.HIGHEST, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
     public void onDamage(EntityDamageByEntityEvent event) {
         Entity entity = event.getEntity();
         if (entity.getType() != EntityType.ITEM_FRAME)
