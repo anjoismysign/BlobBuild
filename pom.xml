@@ -6,7 +6,7 @@
 
     <groupId>io.github.anjoismysign</groupId>
     <artifactId>blobbuild</artifactId>
-    <version>1.1.6</version>
+    <version>1.2.0</version>
     <packaging>jar</packaging>
 
     <name>BlobBuild</name>
@@ -14,7 +14,7 @@
     <description>An efficient build protection plugin</description>
     <properties>
         <minecraft.version>1.21.5</minecraft.version>
-        <java.version>17</java.version>
+        <java.version>25</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -83,7 +83,7 @@
         <dependency>
             <groupId>io.github.anjoismysign</groupId>
             <artifactId>bloblib</artifactId>
-            <version>1.698.32</version>
+            <version>1.700</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
