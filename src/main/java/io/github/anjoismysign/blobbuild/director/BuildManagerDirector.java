@@ -3,7 +3,7 @@ package io.github.anjoismysign.blobbuild.director;
 import io.github.anjoismysign.blobbuild.BlobBuild;
 import io.github.anjoismysign.blobbuild.director.manager.ConfigManager;
 import io.github.anjoismysign.blobbuild.listener.ListenerManager;
-import io.github.anjoismysign.bloblib.entities.GenericManagerDirector;
+import io.github.anjoismysign.bloblib.manager.GenericManagerDirector;
 
 public class BuildManagerDirector extends GenericManagerDirector<BlobBuild> {
 

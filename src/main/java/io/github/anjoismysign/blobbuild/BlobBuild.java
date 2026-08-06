@@ -3,9 +3,9 @@ package io.github.anjoismysign.blobbuild;
 import org.bukkit.Bukkit;
 import org.jetbrains.annotations.NotNull;
 import io.github.anjoismysign.blobbuild.director.BuildManagerDirector;
-import io.github.anjoismysign.bloblib.entities.PluginUpdater;
-import io.github.anjoismysign.bloblib.managers.BlobPlugin;
-import io.github.anjoismysign.bloblib.managers.IManagerDirector;
+import io.github.anjoismysign.bloblib.updater.PluginUpdater;
+import io.github.anjoismysign.bloblib.manager.BlobPlugin;
+import io.github.anjoismysign.bloblib.manager.IManagerDirector;
 
 public class BlobBuild extends BlobPlugin {
     private BuildManagerDirector director;

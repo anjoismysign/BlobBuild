@@ -16,7 +16,7 @@ import io.github.anjoismysign.blobbuild.BlobBuild;
 import io.github.anjoismysign.blobbuild.director.BuildManager;
 import io.github.anjoismysign.blobbuild.director.BuildManagerDirector;
 import io.github.anjoismysign.bloblib.api.BlobLibMessageAPI;
-import io.github.anjoismysign.bloblib.entities.SimpleEventListener;
+import io.github.anjoismysign.bloblib.listener.SimpleEventListener;
 
 import java.util.ArrayList;
 import java.util.HashSet;
