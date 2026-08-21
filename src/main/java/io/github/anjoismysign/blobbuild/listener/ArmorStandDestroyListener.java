@@ -3,6 +3,7 @@ package io.github.anjoismysign.blobbuild.listener;
 import io.github.anjoismysign.blobbuild.director.manager.ConfigManager;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;
@@ -35,8 +36,20 @@ public class ArmorStandDestroyListener implements Listener {
     @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
     public void onDamage(EntityDamageByEntityEvent event) {
         Entity entity = event.getEntity();
-        if (entity.getType() != EntityType.ARMOR_STAND)
+        if (entity.getType() != EntityType.ARMOR_STAND) {
             return;
+        }
+        Entity damager = event.getDamager();
+        if (damager.getType() != EntityType.PLAYER){
+            return;
+        }
+        Player player = (Player) damager;
+        if (listenerManager.isWhitelisted(player)) {
+            return;
+        }
+        if (listenerManager.exception.contains(player.getName())) {
+            return;
+        }
         event.setCancelled(true);
     }
 }

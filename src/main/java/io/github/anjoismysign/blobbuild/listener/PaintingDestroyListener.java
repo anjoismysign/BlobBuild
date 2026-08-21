@@ -3,11 +3,12 @@ package io.github.anjoismysign.blobbuild.listener;
 import io.github.anjoismysign.blobbuild.director.manager.ConfigManager;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.hanging.HangingBreakByEntityEvent;
 
 public class PaintingDestroyListener implements Listener {
     private final ListenerManager listenerManager;
@@ -33,11 +34,22 @@ public class PaintingDestroyListener implements Listener {
     }
 
     @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
-    public void onDamage(EntityDamageByEntityEvent event) {
+    public void onDamage(HangingBreakByEntityEvent event) {
         Entity entity = event.getEntity();
         if (entity.getType() != EntityType.PAINTING){
             return;
-            }
+        }
+        Entity damager = event.getRemover();
+        if (damager.getType() != EntityType.PLAYER){
+            return;
+        }
+        Player player = (Player) damager;
+        if (listenerManager.isWhitelisted(player)) {
+            return;
+        }
+        if (listenerManager.exception.contains(player.getName())) {
+            return;
+        }
         event.setCancelled(true);
     }
 }
