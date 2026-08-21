@@ -9,11 +9,11 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
-public class FrameDestroyListener implements Listener {
+public class PaintingDestroyListener implements Listener {
     private final ListenerManager listenerManager;
     private final ConfigManager configManager;
 
-    public FrameDestroyListener(ListenerManager listenerManager) {
+    public PaintingDestroyListener(ListenerManager listenerManager) {
         this.listenerManager = listenerManager;
         this.configManager = listenerManager.getManagerDirector().getConfigManager();
     }
@@ -35,9 +35,9 @@ public class FrameDestroyListener implements Listener {
     @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
     public void onDamage(EntityDamageByEntityEvent event) {
         Entity entity = event.getEntity();
-        if (entity.getType() != EntityType.PAINTING) {
+        if (entity.getType() != EntityType.PAINTING){
             return;
-        }
+            }
         event.setCancelled(true);
     }
 }

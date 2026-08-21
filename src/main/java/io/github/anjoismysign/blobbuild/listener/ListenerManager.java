@@ -27,6 +27,7 @@ public class ListenerManager extends BuildManager implements Listener, CommandEx
     protected final Set<String> exception;
     private List<String> whitelist;
     private final BuildListener buildListener;
+    private final PaintingDestroyListener paintingListener;
     private final ArmorStandDestroyListener armorStandListener;
     private final ItemFrameDestroyListener itemFrameListener;
     private final ItemFrameInteractListener itemFrameInteractListener;
@@ -40,6 +41,7 @@ public class ListenerManager extends BuildManager implements Listener, CommandEx
         plugin.getCommand("blobbuild").setExecutor(this);
         plugin.getCommand("blobbuild").setTabCompleter(this);
         buildListener = new BuildListener(this);
+        paintingListener = new PaintingDestroyListener(this);
         armorStandListener = new ArmorStandDestroyListener(this);
         itemFrameListener = new ItemFrameDestroyListener(this);
         itemFrameInteractListener = new ItemFrameInteractListener(this);
@@ -59,6 +61,7 @@ public class ListenerManager extends BuildManager implements Listener, CommandEx
             this.whitelist = whitelist.value();
             Bukkit.getPluginManager().registerEvents(buildListener, getPlugin());
         }
+        paintingListener.reload();
         armorStandListener.reload();
         itemFrameListener.reload();
         itemFrameInteractListener.reload();
