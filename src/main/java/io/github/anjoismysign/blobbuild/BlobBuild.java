@@ -1,11 +1,11 @@
 package io.github.anjoismysign.blobbuild;
 
-import org.bukkit.Bukkit;
-import org.jetbrains.annotations.NotNull;
 import io.github.anjoismysign.blobbuild.director.BuildManagerDirector;
-import io.github.anjoismysign.bloblib.updater.PluginUpdater;
 import io.github.anjoismysign.bloblib.manager.BlobPlugin;
 import io.github.anjoismysign.bloblib.manager.IManagerDirector;
+import io.github.anjoismysign.bloblib.updater.PluginUpdater;
+import org.bukkit.Bukkit;
+import org.jetbrains.annotations.NotNull;
 
 public class BlobBuild extends BlobPlugin {
     private BuildManagerDirector director;

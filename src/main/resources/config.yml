@@ -18,6 +18,10 @@ AntiItemFrame-Destroy:
   Register: true
 AntiItemFrame-Interact:
   Register: true
+# If true, all players that are not whitelisted will not be allowed
+# to destroy paintings unless they execute '/blobbuild switchstate'
+AntiPainting-Destroy:
+  Register: true
 AntiCrop-Trample:
   Register: true
 AntiBlock-Interact:

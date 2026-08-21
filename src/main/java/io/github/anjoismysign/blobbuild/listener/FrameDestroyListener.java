@@ -1,20 +1,19 @@
 package io.github.anjoismysign.blobbuild.listener;
 
 import io.github.anjoismysign.blobbuild.director.manager.ConfigManager;
-import org.bukkit.Material;
-import org.bukkit.block.Block;
-import org.bukkit.event.Event;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 
-public class CropTrampleListener implements Listener {
+public class FrameDestroyListener implements Listener {
     private final ListenerManager listenerManager;
     private final ConfigManager configManager;
 
-    public CropTrampleListener(ListenerManager listenerManager) {
+    public FrameDestroyListener(ListenerManager listenerManager) {
         this.listenerManager = listenerManager;
         this.configManager = listenerManager.getManagerDirector().getConfigManager();
     }
@@ -24,7 +23,7 @@ public class CropTrampleListener implements Listener {
     }
 
     public void load() {
-        if (configManager.antiCropTrample())
+        if (configManager.antiPaintingDestroy())
             listenerManager.getPlugin().getServer().getPluginManager().registerEvents(this, listenerManager.getPlugin());
     }
 
@@ -34,13 +33,11 @@ public class CropTrampleListener implements Listener {
     }
 
     @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
-    public void onTrample(PlayerInteractEvent event) {
-        if (event.useInteractedBlock() == Event.Result.DENY)
+    public void onDamage(EntityDamageByEntityEvent event) {
+        Entity entity = event.getEntity();
+        if (entity.getType() != EntityType.PAINTING) {
             return;
-        Block block = event.getClickedBlock();
-        Material material = block.getType();
-        if (material != Material.FARMLAND)
-            return;
+        }
         event.setCancelled(true);
     }
 }

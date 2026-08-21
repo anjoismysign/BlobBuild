@@ -1,14 +1,14 @@
 package io.github.anjoismysign.blobbuild.director.manager;
 
+import io.github.anjoismysign.blobbuild.BlobBuild;
+import io.github.anjoismysign.blobbuild.director.BuildManager;
+import io.github.anjoismysign.blobbuild.director.BuildManagerDirector;
 import io.papermc.paper.registry.RegistryAccess;
 import io.papermc.paper.registry.RegistryKey;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Registry;
 import org.bukkit.block.BlockType;
 import org.bukkit.configuration.file.FileConfiguration;
-import io.github.anjoismysign.blobbuild.BlobBuild;
-import io.github.anjoismysign.blobbuild.director.BuildManager;
-import io.github.anjoismysign.blobbuild.director.BuildManagerDirector;
 
 import java.util.Objects;
 import java.util.Set;
@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 
 public class ConfigManager extends BuildManager {
     private FileConfiguration configuration;
+    private boolean antiPaintingDestroy;
     private boolean antiArmorStandDestroy;
     private boolean antiItemFrameDestroy;
     private boolean antiItemFrameInteract;
@@ -36,6 +37,8 @@ public class ConfigManager extends BuildManager {
         plugin.getConfig().options().copyDefaults(true);
         plugin.saveConfig();
         configuration = plugin.getConfig();
+        antiPaintingDestroy = configuration
+                .getBoolean("AntiPainting-Destroy.Register");
         antiArmorStandDestroy = configuration
                 .getBoolean("AntiArmorStand-Destroy.Register");
         antiItemFrameDestroy = configuration
@@ -64,6 +67,10 @@ public class ConfigManager extends BuildManager {
 
     public FileConfiguration getConfiguration() {
         return configuration;
+    }
+
+    public boolean antiPaintingDestroy() {
+        return antiPaintingDestroy;
     }
 
     public boolean antiArmorStandDestroy() {

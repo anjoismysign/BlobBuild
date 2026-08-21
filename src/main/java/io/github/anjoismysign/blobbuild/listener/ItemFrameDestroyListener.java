@@ -1,5 +1,6 @@
 package io.github.anjoismysign.blobbuild.listener;
 
+import io.github.anjoismysign.blobbuild.director.manager.ConfigManager;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
@@ -7,7 +8,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import io.github.anjoismysign.blobbuild.director.manager.ConfigManager;
 
 public class ItemFrameDestroyListener implements Listener {
     private final ListenerManager listenerManager;
