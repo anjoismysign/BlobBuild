@@ -38,10 +38,12 @@ public class BlockInteractListener implements Listener {
             return;
         }
         Player player = event.getPlayer();
-        if (listenerManager.isWhitelisted(player))
+        if (listenerManager.isWhitelisted(player)) {
             return;
-        if (listenerManager.exception.contains(player.getName()))
+        }
+        if (listenerManager.exception.contains(player.getName())) {
             return;
+        }
         if (configManager.getAllowedBlockInteract().contains(event.getClickedBlock().getType().asBlockType())){
             return;
         }
