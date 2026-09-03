@@ -18,6 +18,7 @@ public class ConfigManager extends BuildManager {
     private FileConfiguration configuration;
     private boolean antiPaintingDestroy;
     private boolean antiArmorStandDestroy;
+    private boolean antiArmorStandInteract;
     private boolean antiItemFrameDestroy;
     private boolean antiItemFrameInteract;
     private boolean antiCropTrample;
@@ -41,6 +42,8 @@ public class ConfigManager extends BuildManager {
                 .getBoolean("AntiPainting-Destroy.Register");
         antiArmorStandDestroy = configuration
                 .getBoolean("AntiArmorStand-Destroy.Register");
+        antiArmorStandInteract = configuration
+                .getBoolean("AntiArmorStand-Interact.Register");
         antiItemFrameDestroy = configuration
                 .getBoolean("AntiItemFrame-Destroy.Register");
         antiItemFrameInteract = configuration
@@ -75,6 +78,10 @@ public class ConfigManager extends BuildManager {
 
     public boolean antiArmorStandDestroy() {
         return antiArmorStandDestroy;
+    }
+
+    public boolean antiArmorStandInteract() {
+        return antiArmorStandInteract;
     }
 
     public boolean antiItemFrameDestroy() {

@@ -13,6 +13,10 @@ Build:
 AntiArmorStand-Destroy:
   Register: true
 # If true, all players that are not whitelisted will not be allowed
+# to interact with armorstands unless they execute '/blobbuild switchstate'
+AntiArmorStand-Interact:
+  Register: true
+# If true, all players that are not whitelisted will not be allowed
 # to destroy item frames unless they execute '/blobbuild switchstate'
 AntiItemFrame-Destroy:
   Register: true

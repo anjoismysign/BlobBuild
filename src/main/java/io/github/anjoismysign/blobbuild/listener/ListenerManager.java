@@ -28,7 +28,8 @@ public class ListenerManager extends BuildManager implements Listener, CommandEx
     private List<String> whitelist;
     private final BuildListener buildListener;
     private final PaintingDestroyListener paintingListener;
-    private final ArmorStandDestroyListener armorStandListener;
+    private final ArmorStandDestroyListener armorStandDestroyListener;
+    private final ArmorStandInteractListener armorStandInteractListener;
     private final ItemFrameDestroyListener itemFrameListener;
     private final ItemFrameInteractListener itemFrameInteractListener;
     private final CropTrampleListener cropTrampleListener;
@@ -42,7 +43,8 @@ public class ListenerManager extends BuildManager implements Listener, CommandEx
         plugin.getCommand("blobbuild").setTabCompleter(this);
         buildListener = new BuildListener(this);
         paintingListener = new PaintingDestroyListener(this);
-        armorStandListener = new ArmorStandDestroyListener(this);
+        armorStandDestroyListener = new ArmorStandDestroyListener(this);
+        armorStandInteractListener = new ArmorStandInteractListener(this);
         itemFrameListener = new ItemFrameDestroyListener(this);
         itemFrameInteractListener = new ItemFrameInteractListener(this);
         cropTrampleListener = new CropTrampleListener(this);
@@ -62,7 +64,8 @@ public class ListenerManager extends BuildManager implements Listener, CommandEx
             Bukkit.getPluginManager().registerEvents(buildListener, getPlugin());
         }
         paintingListener.reload();
-        armorStandListener.reload();
+        armorStandDestroyListener.reload();
+        armorStandInteractListener.reload();
         itemFrameListener.reload();
         itemFrameInteractListener.reload();
         cropTrampleListener.reload();
